@@ -16,6 +16,13 @@ mkdir -p package/parted && wget https://raw.githubusercontent.com/lisaac/luci-ap
 git clone https://github.com/project-openwrt/FileBrowser.git package/luci-app-filebrowser
 #add OpenAppFilter
 git clone https://github.com/project-openwrt/OpenAppFilter.git package/OpenAppFilter
+#add luci-app-dockerman
+./scripts/feeds update luci-lib-jsonc
+./scripts/feeds install luci-lib-jsonc
+mkdir -p package/luci-lib-docker && \
+wget https://raw.githubusercontent.com/lisaac/luci-lib-docker/master/Makefile -O package/luci-lib-docker/Makefile
+mkdir -p package/luci-app-dockerman && \
+wget https://raw.githubusercontent.com/lisaac/luci-app-dockerman/master/Makefile -O package/luci-app-dockerman/Makefile
 #upgrade feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
